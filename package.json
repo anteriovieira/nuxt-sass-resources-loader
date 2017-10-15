@@ -1,0 +1,27 @@
+{
+  "name": "nuxt-sass-resources-loader",
+  "version": "1.0.0",
+  "description": "Nuxt Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nuxt",
+    "sass",
+    "sass-resources-loader",
+    "module"
+  ],
+  "author": {
+    "name": "Antério Vieira",
+    "email": "anteriovieira@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anteriovieira/nuxt-sass-resources-loader.git"
+  },
+  "devDependencies": {
+    "sass-resources-loader": "^1.3.1"
+  }
+}
