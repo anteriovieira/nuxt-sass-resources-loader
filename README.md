@@ -2,7 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader)
 
-> [sass-resources-loader](https://github.com/shakacode/sass-resources-loader)
+This module does all the hard work of configuring [sass-resources-loader](https://github.com/shakacode/sass-resources-loader) for your nuxt application.
+
+> `sass-resources-loader` @import your SASS resources into every required SASS module. So you can use your shared variables & mixins across all SASS styles without manually importing them in each file. Made to work with CSS Modules!
 
 ## Install
 
