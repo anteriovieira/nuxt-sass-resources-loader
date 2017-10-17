@@ -1,13 +1,12 @@
-module.exports = function nuxtSassResourcesLoader (options) {
+module.exports = function nuxtSassResourcesLoader (moduleOptions) {
+    const options = Object.assign({}, this.options.sassResources, moduleOptions)
+    
     if (typeof options === 'string' || Array.isArray(options)) {
-        options = {
-            resources: options
-        }
+        options.resources = moduleOptions
     }
 
     const sassResourcesLoader = {
-        loader: 'sass-resources-loader',
-        options: options
+        loader: 'sass-resources-loader', options
     }
 
     this.extendBuild((config, { isClient, isServer }) => {
