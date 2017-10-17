@@ -22,7 +22,7 @@ import {resolve} from 'path'
 
 module.exports = {
   modules: [
-    // Provide path to the file with resources
+    // provide path to the file with resources
     ['nuxt-sass-resources-loader', resolve(__.dirname, 'path/to/resources.scss')],
 
     // or array of paths
@@ -35,6 +35,22 @@ module.exports = {
     ['nuxt-sass-resources-loader', {
         resources: resolve(__.dirname, 'path/to/resources.sass')
     }],
+  ],
+}
+```
+
+or sass resoruce option. require v1.1+
+
+```js
+// nuxt.config.js
+import {resolve} from 'path'
+
+module.exports = {
+  modules: [
+    'nuxt-sass-resources-loader'
+  ],
+  sassResources: [
+    resolve(__.dirname, 'path/to/first-resources.sass')
   ]
 }
 ```
