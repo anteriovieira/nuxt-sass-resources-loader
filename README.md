@@ -39,7 +39,7 @@ module.exports = {
 }
 ```
 
-or sass resoruce option. require v1.1+
+or sass resources option. require v1.1+
 
 ```js
 // nuxt.config.js
