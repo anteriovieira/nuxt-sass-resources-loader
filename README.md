@@ -9,9 +9,9 @@ This module does all the hard work of configuring [sass-resources-loader](https:
 ## Install
 
 ```sh
-npm i nuxt-sass-resources-loader --save-dev
+npm i nuxt-sass-resources-loader
 # or 
-yarn add nuxt-sass-resources-loader --dev
+yarn add nuxt-sass-resources-loader
 ```
 
 ## Usage
