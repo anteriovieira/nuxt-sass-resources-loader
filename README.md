@@ -27,13 +27,13 @@ module.exports = {
 
     // or array of paths
     ['nuxt-sass-resources-loader', [
-        resolve(__.dirname, 'path/to/first-resources.sass'),
-        resolve(__.dirname, 'path/to/second-resources.scss'),
+        resolve(__dirname, 'path/to/first-resources.sass'),
+        resolve(__dirname, 'path/to/second-resources.scss'),
     ]],
 
     // or the native options
     ['nuxt-sass-resources-loader', {
-        resources: resolve(__.dirname, 'path/to/resources.sass')
+        resources: resolve(__dirname, 'path/to/resources.sass')
     }],
   ],
 }
@@ -50,7 +50,7 @@ module.exports = {
     'nuxt-sass-resources-loader'
   ],
   sassResources: [
-    resolve(__.dirname, 'path/to/first-resources.sass')
+    resolve(__dirname, 'path/to/first-resources.sass')
   ]
 }
 ```
