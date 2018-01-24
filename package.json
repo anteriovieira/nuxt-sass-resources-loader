@@ -1,7 +1,7 @@
 {
   "name": "nuxt-sass-resources-loader",
   "version": "1.1.0",
-  "description": "Nuxt Module",
+  "description": "SASS resources (e.g. variables, mixins etc.) module for NuxtJs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
