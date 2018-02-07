@@ -1,6 +1,6 @@
 # nuxt-sass-resources-loader
 
-[![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader)
+[![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader) [![patreon](https://img.shields.io/badge/patreon-donate-ff5f5f.svg)](https://patreon.com/anteriovieira)
 
 This module does all the hard work of configuring [sass-resources-loader](https://github.com/shakacode/sass-resources-loader) for your nuxt application.
 
