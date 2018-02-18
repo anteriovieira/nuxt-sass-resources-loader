@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader)
 [![npm](https://img.shields.io/npm/dt/nuxt-sass-resources-loader.svg?style=flat-square)](https://npmjs.com/package/nuxt-sass-resources-loader)
-[![donate](https://img.shields.io/badge/donate-%E2%99%A5-ff5f5f.svg)](https://patreon.com/anteriovieira) 
+[![donate](https://img.shields.io/badge/donate-%E2%99%A5-ff5f5f.svg)](https://patreon.com/anteriovieira)
 
 
 This module does all the hard work of configuring [sass-resources-loader](https://github.com/shakacode/sass-resources-loader) for your nuxt application.
@@ -13,9 +13,11 @@ This module does all the hard work of configuring [sass-resources-loader](https:
 
 ```sh
 npm i nuxt-sass-resources-loader
-# or 
+# or
 yarn add nuxt-sass-resources-loader
 ```
+
+> Note that installing as a dev dependency `--save-dev` or `-D` will not work correctly.
 
 ## Usage
 
@@ -56,6 +58,11 @@ module.exports = {
     resolve(__dirname, 'path/to/first-resources.sass')
   ]
 }
+```
+> Note that in some cases replacing:
+`import {resolve} from 'path'` with the following has worked instead:
+```js
+const resolve = require('path').resolve
 ```
 
 ### Glob pattern matching
