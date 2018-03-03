@@ -3,13 +3,23 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
         moduleOptions = {resources: moduleOptions}
     }
 
-    const options = Object.assign({}, {resources: this.options.sassResources}, moduleOptions)    
+    const options = Object.assign({}, {resources: this.options.sassResources}, moduleOptions) 
+    
+    // Casts the provided resource as an array if it's not one.
+    options.resources = Array.isArray(options.resources) ? options.resources : [options.resources]
+
+    // Try to resolve using NPM resolve path first
+    options.resources = options.resources.reduce((resources, resource) => {
+        resources.push(this.resolvePath(resource))
+
+        return resources
+    }, [])
 
     const sassResourcesLoader = {
         loader: 'sass-resources-loader', options
     }
 
-    this.extendBuild((config, { isClient, isServer }) => {
+    this.extendBuild(config => {
         const sassLoader = config.module.rules.filter(({test}) => {
             return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
         })
@@ -17,7 +27,7 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
             return test.toString() === '/\\.vue$/'
         })
     
-        const loaders = vueLoader.options.loaders;
+        const loaders = vueLoader.options.loaders
 
         Object.keys(loaders).forEach(loader => {
             if (['sass', 'scss'].indexOf(loader) !== -1) {
