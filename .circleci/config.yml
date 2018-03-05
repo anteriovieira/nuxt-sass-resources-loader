@@ -1,37 +1,34 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
-
-
 jobs:
   build:
+    working_directory: /usr/src/app
     docker:
-      - image: circleci/node:8
-
-    working_directory: ~/repo
-
+      - image: banian/node
     steps:
+      # Checkout repository
       - checkout
 
-      # Download and cache dependencies
+      # Restore cache
       - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          key: yarn-{{ checksum "yarn.lock" }}
 
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run: npm test
-
+      # Install dependencies
       - run:
-          name: Send code coverage
-          command: './node_modules/.bin/codecov'
+          name: Install Dependencies
+          command: NODE_ENV=dev yarn
+
+      # Keep cache
+      - save_cache:
+          key: yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - "node_modules"
+
+      # Test
+      - run:
+          name: Tests
+          command: yarn test
+
+      # Coverage
+      - run:
+          name: Coverage
+          command: yarn codecov
