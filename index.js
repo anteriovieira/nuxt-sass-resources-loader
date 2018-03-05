@@ -10,7 +10,7 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
 
     // Try to resolve using NPM resolve path first
     options.resources = options.resources.reduce((resources, resource) => {
-        resources.push(this.resolvePath(resource))
+        resources.push(this.nuxt.resolvePath(resource))
 
         return resources
     }, [])
