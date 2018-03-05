@@ -7,5 +7,9 @@ module.exports = {
     render: {
         resourceHints: false
     },
-    modules: ['@@']
+    modules: [
+        ['@@', [
+            '~/assets/sass/colors.scss'
+        ]]
+    ],
 }

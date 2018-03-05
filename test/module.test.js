@@ -21,6 +21,7 @@ describe('basic', () => {
 
     test('render', async () => {
         let html = await get('/')
-        expect(html).toContain('Works!')
+        expect(html).toContain('color:#35495e;')
+        expect(html).toContain('background:#42b883')
     })
 })

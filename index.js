@@ -1,15 +1,19 @@
+const defaults = {
+    resources: []
+}
+
 module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
     if (typeof moduleOptions === 'string' || Array.isArray(moduleOptions)) {
         moduleOptions = {resources: moduleOptions}
     }
 
-    const options = Object.assign({}, {resources: this.options.sassResources}, moduleOptions) 
+    const options = Object.assign({}, defaults, {resources: this.options.sassResources}, moduleOptions) 
     
     // Casts the provided resource as an array if it's not one.
     options.resources = Array.isArray(options.resources) ? options.resources : [options.resources]
 
     // Try to resolve using NPM resolve path first
-    options.resources = options.resources.reduce((resources, resource) => {
+    options.resources = options.resources.filter(r => !!r).reduce((resources, resource) => {
         resources.push(this.nuxt.resolvePath(resource))
 
         return resources
