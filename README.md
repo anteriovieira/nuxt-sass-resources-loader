@@ -21,48 +21,53 @@ yarn add nuxt-sass-resources-loader
 
 ## Usage
 
-```js
-// nuxt.config.js
-import {resolve} from 'path'
+You can use the [nuxtjs aliases](https://nuxtjs.org/guide/directory-structure#aliases) to resolve the file path.
 
+```js
 module.exports = {
   modules: [
     // provide path to the file with resources
-    ['nuxt-sass-resources-loader', resolve(__dirname, 'path/to/resources.scss')],
+    ['nuxt-sass-resources-loader', '@/path/to/resources.scss'],
 
     // or array of paths
     ['nuxt-sass-resources-loader', [
-        resolve(__dirname, 'path/to/first-resources.sass'),
-        resolve(__dirname, 'path/to/second-resources.scss'),
+        '@/path/to/first-resources.sass',
+        '@/path/to/second-resources.scss',
     ]],
 
     // or the native options
     ['nuxt-sass-resources-loader', {
-        resources: resolve(__dirname, 'path/to/resources.sass')
+        resources: '@/path/to/resources.sass'
     }],
   ],
 }
 ```
 
-or sass resources option. require v1.1+
+> 
+
+with sass resources option. require v1.1+
 
 ```js
 // nuxt.config.js
-import {resolve} from 'path'
+const resolve = require('path').resolve
 
 module.exports = {
   modules: [
     'nuxt-sass-resources-loader'
   ],
   sassResources: [
-    resolve(__dirname, 'path/to/first-resources.sass')
+    '@/path/to/first-resources.sass'
   ]
 }
 ```
-> Note that in some cases replacing:
-`import {resolve} from 'path'` with the following has worked instead:
+
+
+> You can also use resolve from node to indicate the relative path of the file:
 ```js
 const resolve = require('path').resolve
+...
+['nuxt-sass-resources-loader', resolve(__dirname, './path/to/resources.scss')]
+...
 ```
 
 ### Glob pattern matching
