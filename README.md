@@ -1,6 +1,7 @@
 # nuxt-sass-resources-loader
 
 [![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader)
+[![CircleCI](https://img.shields.io/circleci/project/github/anteriovieira/nuxt-sass-resources-loader.svg?style=flat-square)](https://circleci.com/gh/anteriovieira/nuxt-sass-resources-loader)
 [![npm](https://img.shields.io/npm/dt/nuxt-sass-resources-loader.svg?style=flat-square)](https://npmjs.com/package/nuxt-sass-resources-loader)
 [![donate](https://img.shields.io/badge/donate-%E2%99%A5-ff5f5f.svg)](https://patreon.com/anteriovieira)
 
