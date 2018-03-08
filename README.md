@@ -40,6 +40,9 @@ module.exports = {
     ['nuxt-sass-resources-loader', {
         resources: '@/path/to/resources.sass'
     }],
+    
+    // or from the npm package
+    ['nuxt-sass-resources-loader', 'my-package/sass/resources.scss']
   ],
 }
 ```
