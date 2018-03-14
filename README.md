@@ -53,8 +53,6 @@ with sass resources option. require v1.1+
 
 ```js
 // nuxt.config.js
-const resolve = require('path').resolve
-
 module.exports = {
   modules: [
     'nuxt-sass-resources-loader'
