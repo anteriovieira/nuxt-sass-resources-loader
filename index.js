@@ -23,27 +23,49 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
         loader: 'sass-resources-loader', options
     }
 
+    const version = this.nuxt.constructor.version
+    const [major, minor, patch] = version.split('.')
+
     this.extendBuild(config => {
-        const sassLoader = config.module.rules.filter(({test}) => {
-            return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
-        })
-        const vueLoader = config.module.rules.find(({test}) => {
-            return test.toString() === '/\\.vue$/'
-        })
-    
-        const loaders = vueLoader.options.loaders
-
-        Object.keys(loaders).forEach(loader => {
-            if (['sass', 'scss'].indexOf(loader) !== -1) {
-                loaders[loader].push(sassResourcesLoader)
-            }
-        })
-
-        Object.keys(sassLoader).forEach(loader => {
-            sassLoader[loader].use.push(sassResourcesLoader)
-        })
-
+        if (major === '1') {
+            extendV1(config, { sassResourcesLoader })
+        } else {
+            extend(config, { sassResourcesLoader })
+        }
     })
+}
+
+function extendV1(config, { sassResourcesLoader }) {
+    const sassLoader = config.module.rules.filter(({ test }) => {
+        return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
+    })
+    const vueLoader = config.module.rules.find(({ test }) => {
+        return test.toString() === '/\\.vue$/'
+    })
+
+    const loaders = vueLoader.options.loaders
+
+    Object.keys(loaders).forEach(loader => {
+        if (['sass', 'scss'].indexOf(loader) !== -1) {
+            loaders[loader].push(sassResourcesLoader)
+        }
+    })
+
+    Object.keys(sassLoader).forEach(loader => {
+        sassLoader[loader].use.push(sassResourcesLoader)
+    })
+}
+
+function extend(config, { sassResourcesLoader }) {
+    const sassLoaders = config.module.rules.filter(({ test }) => {
+        return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
+    })
+
+    for (const sassLoader of sassLoaders) {
+        for (const rule of sassLoader.oneOf) {
+            rule.use.push(sassResourcesLoader)
+        }
+    }
 }
   
 module.exports.meta = require('./package.json')
