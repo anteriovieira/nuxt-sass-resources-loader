@@ -1,3 +1,5 @@
+const Module = require('module')
+
 const defaults = {
     resources: []
 }
@@ -14,7 +16,7 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
 
     // Try to resolve using NPM resolve path first
     options.resources = options.resources.filter(r => !!r).reduce((resources, resource) => {
-        resources.push(this.nuxt.resolvePath(resource))
+        resources.push(resolvePath.call(this.nuxt, resource))
 
         return resources
     }, [])
@@ -67,5 +69,21 @@ function extend(config, { sassResourcesLoader }) {
         }
     }
 }
+
+// custom resolvePath nuxt.js/lib/core/nuxt.js
+function resolvePath(_path) {
+    try {
+      const resolvedPath = Module._resolveFilename(_path, {
+        paths: this.options.modulesDir
+      })
+      return resolvedPath
+    } catch (error) {
+      if (error.code !== 'MODULE_NOT_FOUND') {
+        throw error
+      }
+    }
+
+    return this.resolveAlias(_path)
+  }
   
 module.exports.meta = require('./package.json')
