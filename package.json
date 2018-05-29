@@ -1,6 +1,6 @@
 {
   "name": "nuxt-sass-resources-loader",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "SASS resources (e.g. variables, mixins etc.) module for NuxtJs",
   "main": "index.js",
   "scripts": {
