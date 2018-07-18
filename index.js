@@ -39,10 +39,10 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
 
 function extendV1(config, { sassResourcesLoader }) {
     const sassLoader = config.module.rules.filter(({ test }) => {
-        return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
+        return !!test ? ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1 : false;
     })
     const vueLoader = config.module.rules.find(({ test }) => {
-        return test.toString() === '/\\.vue$/'
+        return !!test ? test.toString() === '/\\.vue$/' : false
     })
 
     const loaders = vueLoader.options.loaders
@@ -60,7 +60,7 @@ function extendV1(config, { sassResourcesLoader }) {
 
 function extend(config, { sassResourcesLoader }) {
     const sassLoaders = config.module.rules.filter(({ test }) => {
-        return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
+        return !!test ? ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1 : false;
     })
 
     for (const sassLoader of sassLoaders) {
