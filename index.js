@@ -9,8 +9,8 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
         moduleOptions = {resources: moduleOptions}
     }
 
-    const options = Object.assign({}, defaults, {resources: this.options.sassResources}, moduleOptions) 
-    
+    const options = Object.assign({}, defaults, {resources: this.options.sassResources}, moduleOptions)
+
     // Casts the provided resource as an array if it's not one.
     options.resources = Array.isArray(options.resources) ? options.resources : [options.resources]
 
@@ -38,11 +38,11 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
 }
 
 function extendV1(config, { sassResourcesLoader }) {
-    const sassLoader = config.module.rules.filter(({ test }) => {
-        return !!test ? ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1 : false;
+    const sassLoader = config.module.rules.filter(({ test = '' }) => {
+        return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
     })
-    const vueLoader = config.module.rules.find(({ test }) => {
-        return !!test ? test.toString() === '/\\.vue$/' : false
+  const vueLoader = config.module.rules.find(({ test = '' }) => {
+        return test.toString() === '/\\.vue$/'
     })
 
     const loaders = vueLoader.options.loaders
@@ -59,8 +59,8 @@ function extendV1(config, { sassResourcesLoader }) {
 }
 
 function extend(config, { sassResourcesLoader }) {
-    const sassLoaders = config.module.rules.filter(({ test }) => {
-        return !!test ? ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1 : false;
+    const sassLoaders = config.module.rules.filter(({ test = '' }) => {
+        return ['/\\.sass$/', '/\\.scss$/'].indexOf(test.toString()) !== -1
     })
 
     for (const sassLoader of sassLoaders) {
@@ -85,5 +85,5 @@ function resolvePath(_path) {
 
     return this.resolveAlias(_path)
   }
-  
+
 module.exports.meta = require('./package.json')
