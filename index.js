@@ -1,5 +1,4 @@
 const Module = require('module')
-const { existsSync } = require('fs')
 
 const defaults = {
     resources: []
@@ -82,15 +81,9 @@ function resolvePath(_path) {
       if (error.code !== 'MODULE_NOT_FOUND') {
         throw error
       }
-	}
+    }
 
-	const path = this.resolveAlias(_path);
-
-	if (!existsSync(path)) {
-		throw new Error(`Resource '${_path}' does not exist! Is the filename correct?`);
-	}
-
-    return path;
+    return this.resolveAlias(_path)
   }
 
 module.exports.meta = require('./package.json')
