@@ -27,6 +27,7 @@
     "type": "git",
     "url": "git@github.com:anteriovieira/nuxt-sass-resources-loader.git"
   },
+  "homepage": "https://github.com/anteriovieira/nuxt-sass-resources-loader",
   "dependencies": {
     "sass-resources-loader": "^1.3.1"
   },
