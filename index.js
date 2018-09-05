@@ -26,7 +26,7 @@ module.exports = function nuxtSassResourcesLoader (moduleOptions = {}) {
     }
 
     const version = this.nuxt.constructor.version
-    const [major, minor, patch] = version.split('.')
+    const [major] = version.split('.')
 
     this.extendBuild(config => {
         if (major === '1') {
