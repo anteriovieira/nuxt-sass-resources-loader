@@ -1,3 +1,40 @@
+:warning: We are closing the support for this package and transferred to the official community package. So we strongly suggest that you use the official community package [@nuxtjs/style-resources](https://github.com/nuxt-community/style-resources-module).
+
+Specially thanks our contributors submitting bug reports, feature requests and commenting on issues
+
+#### Migration guide
+
+```js
+// nuxt-sass-resorces-loader
+export default {
+  modules: [
+    'nuxt-sass-resources-loader'
+  ],
+  // your settings here
+  sassResources: [
+    '@/path/to/first-resources.sass'
+  ]
+}
+```
+
+```js
+// @nuxtjs/style-resources
+export default {
+  modules: [
+    '@nuxtjs/style-resources',
+  ],
+
+  styleResources: {
+   // your settings here
+   scss: ['@/path/to/first-resources.sass'],
+   less: [],
+   stylus: []
+  }
+}
+```
+
+----
+
 # nuxt-sass-resources-loader
 
 [![npm](https://img.shields.io/npm/v/nuxt-sass-resources-loader.svg)](https://www.npmjs.com/package/nuxt-sass-resources-loader)
